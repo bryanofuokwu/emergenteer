@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   Image
 } from "react-native";
-import Emergency from './Emergency.js';
+
 class MyScreen extends Component {
 
   render() {
@@ -20,7 +20,7 @@ class MyScreen extends Component {
       <View style={styles.main}>
         <View style={styles.logo}>
           <Image
-            source={require("./assets/logo.png")}
+            source={require("./logo.png")}
             style={{ width: 250, height: 250 }}
           />
         </View>
@@ -35,7 +35,7 @@ class MyScreen extends Component {
           //<TouchableOpacity style={styles.btn}>
             //<Text>Login</Text>
             title="Login"
-            onPress={() => navigate('Profile')}
+            onPress={() => navigate('MapPage')}
           // </TouchableOpacity>
           />
         </View>
@@ -84,14 +84,3 @@ const styles = StyleSheet.create({
   }
 });
 export default MyScreen;
-/*
-class Emergency_Type extends Component {
-  // for type of emergency
-  render() {
-    return <Text> Please select your emergency </Text>;
-    <view style={styles.container}>
-      <Button />
-    </view>;
-  }
-}
-*/

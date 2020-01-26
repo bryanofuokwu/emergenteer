@@ -5,13 +5,12 @@ import React, { useState, useEffect } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import AppNavigator from './navigation/AppNavigator';
 import Map from './components/Map';
 import { Marker } from 'react-native-maps';
 import { Callout } from 'react-native-maps';
 import { Button, Alert } from 'react-native';
 
-export default function App(props) {
+export default function MapScreen(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
