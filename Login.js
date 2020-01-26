@@ -37,7 +37,7 @@ class MyScreen extends Component {
             title="Login"
             color="skyblue"
 
-            onPress={() => navigate('MapPage')}
+            onPress={() => navigate('Map')}
           // </TouchableOpacity>
           />
         </View>
