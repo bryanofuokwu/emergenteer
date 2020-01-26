@@ -10,11 +10,14 @@ import { Marker } from 'react-native-maps';
 import { Callout } from 'react-native-maps';
 import { Button, Alert } from 'react-native';
 
+import { useNavigation } from 'react-navigation-hooks';
+
 export default function MapScreen(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
   const [error, seterror] = useState(null);
+  const { navigate } = useNavigation();
   
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -54,7 +57,7 @@ export default function MapScreen(props) {
           <Marker coordinate = {{latitude, longitude }} image = { require("C:/Users/Andrew Wallace/AwesomeProject/flame.png") } />
         </Map>
 
-        <Button title = "Press me" onPress = {() => Alert.alert("Simple Button Pressed")} />
+        <Button title = "Report Incident" onPress = {() => navigate('Profile')} />
       </View>
     );
   }
