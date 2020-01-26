@@ -25,7 +25,7 @@ class MyScreen extends Component {
           />
         </View>
         <View style={styles.container}>
-          <TextInput style={styles.input} placeholder="Username" type="email" />
+          <TextInput style={styles.input} placeholder="Enter Username" type="email" />
           <TextInput
             style={styles.input}
             placeholder="Enter Password"
@@ -35,6 +35,8 @@ class MyScreen extends Component {
           //<TouchableOpacity style={styles.btn}>
             //<Text>Login</Text>
             title="Login"
+            color="skyblue"
+
             onPress={() => navigate('MapPage')}
           // </TouchableOpacity>
           />
@@ -47,17 +49,17 @@ const styles = StyleSheet.create({
   main: {
     height: "100%",
     width: "100%",
-    backgroundColor: "darkred"
+    backgroundColor: "black"
   },
   logo: {
-    backgroundColor: "darkred",
+    backgroundColor: "black",
     alignItems: "center",
     justifyContent: "flex-end",
     height: "45%"
   },
   container: {
     flex: 1,
-    backgroundColor: "darkred",
+    backgroundColor: "black",
     alignItems: "center",
     marginTop: 10
   },
@@ -67,15 +69,15 @@ const styles = StyleSheet.create({
     width: "90%",
     borderRadius: 20,
     borderColor: "black",
-    backgroundColor: "indianred",
-    borderWidth: 3,
+    backgroundColor: "white",
+    borderWidth: 2,
     padding: 10,
     margin: 10
   },
   btn: {
     width: 200,
     height: 50,
-    backgroundColor: "deepskyblue",
+    backgroundColor: "powderblue",
     textAlign: "center",
     borderRadius: 40,
     alignItems: "center",
