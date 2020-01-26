@@ -54,10 +54,10 @@ export default function MapScreen(props) {
            latitudeDelta: 0.0922,
            longitudeDelta: 0.0421,
          }}>
-          <Marker coordinate = {{latitude, longitude }} image = { require("./assets/flame.png") } />
+          <Marker coordinate = {{latitude, longitude }} image = { require("./assets/fire_icon.png") } />
         </Map>
 
-        <Button title = "Report Incident" onPress = {() => navigate('Profile')} />
+        <Button title = "Report Incident" onPress = {() => navigate('Report')} />
       </View>
     );
   }

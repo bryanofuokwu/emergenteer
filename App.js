@@ -13,13 +13,13 @@ import {
 } from "react-native";
 //import { Button } from "./Button";
 import MyScreen from'./Login.js';
-import Emergency_Type from'./Emergency.js';
+import Emergency from'./EmergencyButton.js';
 import MapScreen from './MapPage.js';
 
 const MainNavigator = createStackNavigator({
 	Home: { screen: MyScreen },
-    Profile: { screen: Emergency_Type },
-    MapPage: { screen: MapScreen },
+    Report: { screen: Emergency },
+    Map: { screen: MapScreen },
 });
 const App = createAppContainer(MainNavigator);
 
