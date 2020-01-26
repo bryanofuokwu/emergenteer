@@ -13,7 +13,7 @@ import { Button2 } from "./Button";
 
 export default class Emergency extends React.Component {
   render() {
-    const {navigate} = this.props.navigation;
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.main}>
         <Text
@@ -49,11 +49,23 @@ export default class Emergency extends React.Component {
           />
           <Button style={styles.Button} title="Animal" />
         </View>
-        <Button
-          style = { styles.ButtonLeft }
-          title = "Go Back"
-          onPress = {() => navigate('Map')}
+        <View
+          style={{
+            borderWidth: 1,
+            position: "absolute",
+            bottom: 70,
+            alignSelf: "center",
+            borderRadius: 100,
+            backgroundColor: "black"
+          }}
+        >
+          <Button
+            style={styles.submitButton}
+            title="Go Back"
+            onPress={() => navigate("Map")}
           />
+        </View>
+
         {/* <View style={styles.container}>
           <TextInput style={styles.input} placeholder="Username" type="email" />
           <TextInput
@@ -75,7 +87,7 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     backgroundColor: "black",
-    paddingTop: 30,
+    paddingTop: 30
   },
   logo1: {
     alignItems: "center",
@@ -135,11 +147,11 @@ const styles = StyleSheet.create({
 
   ButtonRight: {
     bottom: 0,
-    right: 0,
+    right: 0
   },
 
   ButtonLeft: {
     bottom: 0,
-    right: 0,
-  },
+    right: 0
+  }
 });
