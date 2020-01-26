@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 600px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+
+  //Extra locations
+  var randomLocation1 = new google.maps.LatLng (-11.807, 142.0583);
+  var randomLocation15 = {lat: -13.1092, lng: 134.1848};
+  var randomLocation30 = {lat: -12.4513, lng: 141.8071};
+
+  
+  //Parse csv file
+  var file= "out.csv";
+  var data;
+  Papa.parse(file, {
+    header: true, 
+    complete: function(results, file) {
+      data = results.data;
+      console.log(data);
+    },
+  })
+
+  //Defining icons, icons come from icons8.com
+  var fireIcon = "fire_icon.png";
+  var animalIcon = "animal_icon.png";
+  var alertIcon= "alert_icon.png";
+
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 5, center: randomLocation1});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+
+  // Random location markers
+  var markerRandomLocation1 = new google.maps.Marker({position: randomLocation1, icon: fireIcon, map: map});
+  var markerRandomLocation15 = new google.maps.Marker({position: randomLocation15, icon: animalIcon, map: map});
+  var markerRandomLocation30 = new google.maps.Marker({position: randomLocation30, icon: alertIcon, map: map});
+}
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <!-- api_key = AIzaSyC3ZP6Zje2I1U6iD_o7OZ7mBpuGKqFP4R8; -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3ZP6Zje2I1U6iD_o7OZ7mBpuGKqFP4R8&callback=initMap">
+    </script>
+    <script async defer
+    src="./papaparse.js">
+    </script>
+  </body>
+</html>
