@@ -28,21 +28,48 @@ export default class Emergency extends React.Component {
           {" "}
           Emergency Type
         </Text>
-        <View style={styles.logo1}>
+        <View style={{
+            borderWidth: 1,
+            position: "absolute",
+            bottom: 200,
+            alignSelf: "left",
+            left: 20,
+            borderRadius: 100,
+            backgroundColor: "black"
+          }}>
           <Image
             source={require("./assets/alert_icon.png")}
             style={{ width: 75, height: 75 }}
           />
           <Button style={styles.Button} title="Emergency" />
         </View>
-        <View style={styles.logo2}>
+        <View style={{
+            borderWidth: 1,
+            position: "absolute",
+            bottom: 200,
+            alignSelf: "center",
+            center: 0,
+            borderRadius: 100,
+            backgroundColor: "black"
+          }}>
+        
           <Image
             source={require("./assets/fire_icon.png")}
             style={{ width: 75, height: 75 }}
           />
-          <Button style={styles.Button} title="Fire" />
+          <Button style={styles.submitButton} title="Fire" 
+            onPress={() => navigate("Map")}
+          />
         </View>
-        <View style={styles.logo3}>
+        <View style={{
+            borderWidth: 1,
+            position: "absolute",
+            bottom: 200,
+            alignSelf: "right",
+            right: 20,
+            borderRadius: 100,
+            backgroundColor: "black"
+          }}>
           <Image
             source={require("./assets/animal_icon.png")}
             style={{ width: 75, height: 75 }}
