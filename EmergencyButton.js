@@ -9,8 +9,15 @@ import {
   TouchableOpacity,
   Image
 } from "react-native";
-import { Button2 } from "./Button";
+//import { Button2 } from "./Button";
 
+import { alertFire } from "./MapPage";
+import { alertAnim } from "./MapPage";
+import { alertEmerg } from "./MapPage";
+import { alertFireOff } from "./MapPage";
+import { alertAnimOff } from "./MapPage";
+import { alertEmergOff } from "./MapPage";
+//import combined from "./MapPage";
 export default class Emergency extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
@@ -21,33 +28,90 @@ export default class Emergency extends React.Component {
             fontWeight: "bold",
             color: "white",
             marginTop: 80,
-            fontSize: 40,
+            fontSize: 60,
             textAlign: "center"
           }}
         >
           {" "}
-          Emergency Type
+          SELECT EMERGENCY TYPE
         </Text>
-        <View style={styles.logo1}>
+        <View
+          style={{
+            borderWidth: 1,
+            position: "absolute",
+            bottom: 250,
+            alignSelf: "center",
+            center: 0,
+            borderRadius: 100,
+            backgroundColor: "black"
+          }}
+        >
           <Image
             source={require("./assets/alert_icon.png")}
-            style={{ width: 75, height: 75 }}
+            style={{ width: 75, height: 75, alignSelf: "center" }}
           />
-          <Button style={styles.Button} title="Emergency" />
+          <Button
+            style={styles.Button}
+            title="Emergency"
+            onPress={() => {
+              alertEmerg();
+              alertFireOff();
+              alertAnimOff();
+              navigate("Map2");
+            }}
+          />
         </View>
-        <View style={styles.logo2}>
+        <View
+          style={{
+            borderWidth: 1,
+            position: "absolute",
+            bottom: 250,
+            alignSelf: "left",
+            left: 20,
+            borderRadius: 100,
+            backgroundColor: "black"
+          }}
+        >
           <Image
             source={require("./assets/fire_icon.png")}
-            style={{ width: 75, height: 75 }}
+            style={{ width: 75, height: 75, alignSelf: "center" }}
           />
-          <Button style={styles.Button} title="Fire" />
+          <Button
+            style={styles.Button}
+            title="Fire"
+            onPress={() => {
+              alertFire();
+              alertAnimOff();
+              alertEmergOff();
+              navigate("Map2");
+            }}
+          />
         </View>
-        <View style={styles.logo3}>
+        <View
+          style={{
+            borderWidth: 1,
+            position: "absolute",
+            bottom: 250,
+            alignSelf: "right",
+            right: 20,
+            borderRadius: 100,
+            backgroundColor: "black"
+          }}
+        >
           <Image
             source={require("./assets/animal_icon.png")}
-            style={{ width: 75, height: 75 }}
+            style={{ width: 75, height: 75, alignSelf: "center" }}
           />
-          <Button style={styles.Button} title="Animal" />
+          <Button
+            style={styles.Button}
+            title="Animal"
+            onPress={() => {
+              alertAnim();
+              alertEmergOff();
+              alertFireOff();
+              navigate("Map2");
+            }}
+          />
         </View>
         <View
           style={{
@@ -62,7 +126,7 @@ export default class Emergency extends React.Component {
           <Button
             style={styles.submitButton}
             title="Go Back"
-            onPress={() => navigate("Map")}
+            onPress={() => navigate("Map2")}
           />
         </View>
 
@@ -126,9 +190,9 @@ const styles = StyleSheet.create({
     margin: 10
   },
   btn: {
-    width: 100,
-    height: 25,
-    backgroundColor: "white",
+    width: 200,
+    height: 50,
+    backgroundColor: "deepskyblue",
     textAlign: "center",
     borderRadius: 40,
     alignItems: "center",

@@ -12,6 +12,19 @@ import {
   Image
 } from "react-native";
 
+class Inputs extends Component {
+   state = {
+      email: '',
+      password: ''
+   }
+   handleEmail = (text) => {
+      this.setState({ email: text })
+   }
+   handlePassword = (text) => {
+      this.setState({ password: text })
+   }
+ }
+
 class MyScreen extends Component {
 
   render() {
@@ -25,19 +38,23 @@ class MyScreen extends Component {
           />
         </View>
         <View style={styles.container}>
-          <TextInput style={styles.input} placeholder="Enter Username" type="email" />
+          <TextInput style={styles.input} 
+          placeholder="Enter Username" type="email" 
+          onChangeText = {this.handleEmail}
+          />
           <TextInput
             style={styles.input}
             placeholder="Enter Password"
             secureTextEntry
+            onChangeText = {this.handlePassword}
           />
-          <Button //style={styles.btn}
+          <Button //style={styles.btn} 
           //<TouchableOpacity style={styles.btn}>
             //<Text>Login</Text>
             title="Login"
             color="skyblue"
 
-            onPress={() => navigate('Map')}
+            onPress={() => navigate('Map1')}
           // </TouchableOpacity>
           />
         </View>

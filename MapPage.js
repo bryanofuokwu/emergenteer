@@ -12,6 +12,27 @@ import { Button, Alert } from "react-native";
 
 import { useNavigation } from "react-navigation-hooks";
 
+global.onFire = false;
+export const alertFire = () => {
+  global.onFire = true;
+};
+global.onEmerg = false;
+export const alertEmerg = () => {
+  global.onEmerg = true;
+};
+global.animal = false;
+export const alertAnim = () => {
+  global.animal = true;
+};
+export const alertFireOff = () => {
+  global.onFire = false;
+};
+export const alertEmergOff = () => {
+  global.onEmerg = false;
+};
+export const alertAnimOff = () => {
+  global.animal = false;
+};
 export default function MapScreen(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
   const [latitude, setLatitude] = useState(0);
@@ -44,62 +65,528 @@ export default function MapScreen(props) {
       />
     );
   } else {
-    return (
-      <View style={styles.main}>
-        <View style={styles.container}>
-          {Platform.OS === "ios" && <StatusBar barStyle="default" />}
-          <Map
-            style={styles.map}
-            initialRegion={{
-              latitude: 37.78825,
-              longitude: -122.4324,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421
+    if (global.onFire == true) {
+      return (
+        <View style={styles.main}>
+          <View style={styles.container}>
+            {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+            <Map
+              style={styles.map}
+              initialRegion={{
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421
+              }}
+            >
+              <Marker
+                coordinate={{ latitude: -36.69, longitude: 144.7 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.2, longitude: 145.345 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.85, longitude: 145.7 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.739, longitude: 147.3 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.69, longitude: 145.98 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.77, longitude: 146.6 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.4, longitude: 146.7 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.017, longitude: 144.99 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.12, longitude: 145.701 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.4, longitude: 146.9 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.05, longitude: 145.24 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36, longitude: 145.24 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.12, longitude: 145.74 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.35, longitude: 145.5 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.67, longitude: 146.7 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.69, longitude: 146.7 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.27, longitude: 144.72 }}
+                image={require("./assets/alert_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.35, longitude: 146.85 }}
+                image={require("./assets/alert_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude, longitude }}
+                image={require("./assets/fire_icon.png")}
+              />
+            </Map>
+          </View>
+          <View
+            style={{
+              borderWidth: 1,
+              position: "absolute",
+              bottom: 70,
+              alignSelf: "flex-start",
+              borderRadius: 100,
+              backgroundColor: "black",
+              marginLeft: 10
             }}
           >
-            <Marker
-              coordinate={{ latitude, longitude }}
-              image={require("./assets/fire_icon.png")}
+            <Button
+              style={styles.submitButton}
+              title="Report Incident "
+              onPress={() => navigate("Report")}
             />
-          </Map>
+          </View>
+
+          <View
+            style={{
+              borderWidth: 1,
+              position: "absolute",
+              bottom: 70,
+              alignSelf: "flex-end",
+              borderRadius: 100,
+              backgroundColor: "black",
+              marginRight: 10,
+              right: 1
+            }}
+          >
+            <Button
+              style={styles.submitButton}
+              title="Go Back"
+              onPress={() => navigate("Home")}
+            />
+          </View>
         </View>
-        <View
-          style={{
-            borderWidth: 1,
-            position: "absolute",
-            bottom: 70,
-            alignSelf: "flex-end",
-            borderRadius: 100,
-            backgroundColor: "black",
-            marginRight: 10,
-            right: 1
-          }}
-        >
-          <Button
-            style={styles.submitButton}
-            title="Go Back"
-            onPress={() => navigate("Home")}
-          />
+      );
+    } else if (global.animal == true) {
+      return (
+        <View style={styles.main}>
+          <View style={styles.container}>
+            {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+            <Map
+              style={styles.map}
+              initialRegion={{
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421
+              }}
+            >
+              <Marker
+                coordinate={{ latitude: -36.69, longitude: 144.7 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.2, longitude: 145.345 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.85, longitude: 145.7 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.739, longitude: 147.3 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.69, longitude: 145.98 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.77, longitude: 146.6 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.4, longitude: 146.7 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.017, longitude: 144.99 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.12, longitude: 145.701 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.4, longitude: 146.9 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.05, longitude: 145.24 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36, longitude: 145.24 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.12, longitude: 145.74 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.35, longitude: 145.5 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.67, longitude: 146.7 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.69, longitude: 146.7 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.27, longitude: 144.72 }}
+                image={require("./assets/alert_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.35, longitude: 146.85 }}
+                image={require("./assets/alert_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude, longitude }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+            </Map>
+          </View>
+          <View
+            style={{
+              borderWidth: 1,
+              position: "absolute",
+              bottom: 70,
+              alignSelf: "flex-start",
+              borderRadius: 100,
+              backgroundColor: "black",
+              marginLeft: 10
+            }}
+          >
+            <Button
+              style={styles.submitButton}
+              title="Report Incident "
+              onPress={() => navigate("Report")}
+            />
+          </View>
+
+          <View
+            style={{
+              borderWidth: 1,
+              position: "absolute",
+              bottom: 70,
+              alignSelf: "flex-end",
+              borderRadius: 100,
+              backgroundColor: "black",
+              marginRight: 10,
+              right: 1
+            }}
+          >
+            <Button
+              style={styles.submitButton}
+              title="Go Back"
+              onPress={() => navigate("Home")}
+            />
+          </View>
         </View>
-        <View
-          style={{
-            borderWidth: 1,
-            position: "absolute",
-            bottom: 70,
-            alignSelf: "flex-start",
-            borderRadius: 100,
-            backgroundColor: "black",
-            marginLeft: 10
-          }}
-        >
-          <Button
-            style={styles.submitButton}
-            title="Report Incident"
-            onPress={() => navigate("Report")}
-          />
+      );
+    } else if (global.onEmerg == true) {
+      return (
+        <View style={styles.main}>
+          <View style={styles.container}>
+            {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+            <Map
+              style={styles.map}
+              initialRegion={{
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421
+              }}
+            >
+              <Marker
+                coordinate={{ latitude: -36.69, longitude: 144.7 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.2, longitude: 145.345 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.85, longitude: 145.7 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.739, longitude: 147.3 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.69, longitude: 145.98 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.77, longitude: 146.6 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.4, longitude: 146.7 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.017, longitude: 144.99 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.12, longitude: 145.701 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.4, longitude: 146.9 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.05, longitude: 145.24 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36, longitude: 145.24 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.12, longitude: 145.74 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.35, longitude: 145.5 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.67, longitude: 146.7 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.69, longitude: 146.7 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.27, longitude: 144.72 }}
+                image={require("./assets/alert_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.35, longitude: 146.85 }}
+                image={require("./assets/alert_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude, longitude }}
+                image={require("./assets/alert_icon.png")}
+              />
+            </Map>
+          </View>
+          <View
+            style={{
+              borderWidth: 1,
+              position: "absolute",
+              bottom: 70,
+              alignSelf: "flex-start",
+              borderRadius: 100,
+              backgroundColor: "black",
+              marginLeft: 10
+            }}
+          >
+            <Button
+              style={styles.submitButton}
+              title="Report Incident "
+              onPress={() => navigate("Report")}
+            />
+          </View>
+
+          <View
+            style={{
+              borderWidth: 1,
+              position: "absolute",
+              bottom: 70,
+              alignSelf: "flex-start",
+              borderRadius: 100,
+              backgroundColor: "black",
+              marginRight: 10,
+              right: 1
+            }}
+          >
+            <Button
+              style={styles.submitButton}
+              title="Go Back"
+              onPress={() => navigate("Home")}
+            />
+          </View>
         </View>
-      </View>
-    );
+      );
+    } else {
+      return (
+        <View style={styles.main}>
+          <View style={styles.container}>
+            {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+            <Map
+              style={styles.map}
+              initialRegion={{
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421
+              }}
+            >
+              <Marker
+                coordinate={{ latitude: -36.69, longitude: 144.7 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.2, longitude: 145.345 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.85, longitude: 145.7 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.739, longitude: 147.3 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.69, longitude: 145.98 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.77, longitude: 146.6 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.4, longitude: 146.7 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.017, longitude: 144.99 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.12, longitude: 145.701 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.4, longitude: 146.9 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.05, longitude: 145.24 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36, longitude: 145.24 }}
+                image={require("./assets/fire_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.12, longitude: 145.74 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.35, longitude: 145.5 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -35.67, longitude: 146.7 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.69, longitude: 146.7 }}
+                image={require("./assets/animal_map_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -37.27, longitude: 144.72 }}
+                image={require("./assets/alert_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude: -36.35, longitude: 146.85 }}
+                image={require("./assets/alert_icon.png")}
+              />
+              <Marker
+                coordinate={{ latitude, longitude }}
+                title="title"
+                //image = {require("./assets/animal_icon.png")}
+              />
+            </Map>
+          </View>
+
+          <View
+            style={{
+              borderWidth: 1,
+              position: "absolute",
+              bottom: 70,
+              alignSelf: "flex-end",
+              borderRadius: 100,
+              backgroundColor: "black",
+              marginRight: 10,
+              right: 1
+            }}
+          >
+            <Button
+              style={styles.submitButton}
+              title="Go Back"
+              onPress={() => navigate("Home")}
+            />
+          </View>
+          <View
+            style={{
+              borderWidth: 1,
+              position: "absolute",
+              bottom: 70,
+              alignSelf: "flex-start",
+              borderRadius: 100,
+              backgroundColor: "black",
+              marginLeft: 10
+            }}
+          >
+            <Button
+              style={styles.submitButton}
+              title="Report Incident"
+              onPress={() => navigate("Report")}
+            />
+          </View>
+        </View>
+      );
+    }
   }
 }
 
