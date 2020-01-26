@@ -1,16 +1,16 @@
-import { AppLoading } from 'expo';
-import { Asset } from 'expo-asset';
-import * as Font from 'expo-font';
-import React, { useState, useEffect } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { AppLoading } from "expo";
+import { Asset } from "expo-asset";
+import * as Font from "expo-font";
+import React, { useState, useEffect } from "react";
+import { Platform, StatusBar, StyleSheet, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
-import Map from './Map.js';
-import { Marker } from 'react-native-maps';
-import { Callout } from 'react-native-maps';
-import { Button, Alert } from 'react-native';
+import Map from "./Map.js";
+import { Marker } from "react-native-maps";
+import { Callout } from "react-native-maps";
+import { Button, Alert } from "react-native";
 
-import { useNavigation } from 'react-navigation-hooks';
+import { useNavigation } from "react-navigation-hooks";
 
 export default function MapScreen(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -18,17 +18,18 @@ export default function MapScreen(props) {
   const [longitude, setLongitude] = useState(0);
   const [error, seterror] = useState(null);
   const { navigate } = useNavigation();
-  
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       position => {
+        setLatitude(position.coords.latitude);
 
-          setLatitude(position.coords.latitude);
-
-          setLongitude(position.coords.longitude);
+        setLongitude(position.coords.longitude);
       },
 
-      error => { seterror(error.message) },
+      error => {
+        seterror(error.message);
+      },
 
       { enableHighAccuracy: true, timeout: 200000, maximumAge: 2000 }
     );
@@ -44,34 +45,59 @@ export default function MapScreen(props) {
     );
   } else {
     return (
-      <View style={styles.main} >
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <Map
-         style={styles.map}
-         initialRegion={{
-           latitude: 37.78825,
-           longitude: -122.4324,
-           latitudeDelta: 0.0922,
-           longitudeDelta: 0.0421,
-         }}>
-          <Marker coordinate = {{latitude, longitude }} image = { require("./assets/fire_icon.png") } />
-        </Map>
+      <View style={styles.main}>
+        <View style={styles.container}>
+          {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+          <Map
+            style={styles.map}
+            initialRegion={{
+              latitude: 37.78825,
+              longitude: -122.4324,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421
+            }}
+          >
+            <Marker
+              coordinate={{ latitude, longitude }}
+              image={require("./assets/fire_icon.png")}
+            />
+          </Map>
         </View>
-
-      <Button 
-            style = { styles.ButtonRight } 
-            title = "Report Incident" 
-            onPress = {() => navigate('Report')} 
-
-      />
-        
-      <Button 
-           style = { styles.ButtonLeft } 
-           title = "Go Back" 
-           onPress = {() => navigate('Home')} 
-      /> 
-
+        <View
+          style={{
+            borderWidth: 1,
+            position: "absolute",
+            bottom: 70,
+            alignSelf: "flex-end",
+            borderRadius: 100,
+            backgroundColor: "black",
+            marginRight: 10,
+            right: 1
+          }}
+        >
+          <Button
+            style={styles.submitButton}
+            title="Go Back"
+            onPress={() => navigate("Home")}
+          />
+        </View>
+        <View
+          style={{
+            borderWidth: 1,
+            position: "absolute",
+            bottom: 70,
+            alignSelf: "flex-start",
+            borderRadius: 100,
+            backgroundColor: "black",
+            marginLeft: 10
+          }}
+        >
+          <Button
+            style={styles.submitButton}
+            title="Report Incident"
+            onPress={() => navigate("Report")}
+          />
+        </View>
       </View>
     );
   }
@@ -80,16 +106,16 @@ export default function MapScreen(props) {
 async function loadResourcesAsync() {
   await Promise.all([
     Asset.loadAsync([
-      require('./assets/robot-dev.png'),
-      require('./assets/robot-prod.png'),
+      require("./assets/robot-dev.png"),
+      require("./assets/robot-prod.png")
     ]),
     Font.loadAsync({
       // This is the font that we are using for our tab bar
       ...Ionicons.font,
       // We include SpaceMono because we use it in HomeScreen.js. Feel free to
       // remove this if you are not using it in your app
-      'space-mono': require('./assets/SpaceMono-Regular.ttf'),
-    }),
+      "space-mono": require("./assets/SpaceMono-Regular.ttf")
+    })
   ]);
 }
 
@@ -106,7 +132,7 @@ function handleFinishLoading(setLoadingComplete) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff"
   },
   main: {
     height: "100%",
@@ -115,11 +141,16 @@ const styles = StyleSheet.create({
 
   ButtonRight: {
     bottom: 0,
-    right: 0,
+    right: 0
   },
 
   ButtonLeft: {
     bottom: 0,
-    left: 0,
+    left: 0
   },
+  submitButton: {
+    position: "absolute",
+    bottom: 0,
+    left: 0
+  }
 });
