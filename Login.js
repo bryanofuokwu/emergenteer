@@ -20,7 +20,7 @@ class MyScreen extends Component {
       <View style={styles.main}>
         <View style={styles.logo}>
           <Image
-            source={require("./logo.png")}
+            source={require("./assets/logo.png")}
             style={{ width: 250, height: 250 }}
           />
         </View>
