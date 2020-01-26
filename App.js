@@ -22,5 +22,3 @@ const MainNavigator = createStackNavigator({
   Map: { screen: MapScreen }
 });
 const App = createAppContainer(MainNavigator);
-
-export default App;
