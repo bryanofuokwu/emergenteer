@@ -44,6 +44,7 @@ export default function MapScreen(props) {
     );
   } else {
     return (
+      <View style={styles.main} >
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         <Map
@@ -56,8 +57,21 @@ export default function MapScreen(props) {
          }}>
           <Marker coordinate = {{latitude, longitude }} image = { require("./assets/fire_icon.png") } />
         </Map>
+        </View>
 
-        <Button title = "Report Incident" onPress = {() => navigate('Report')} />
+      <Button 
+            style = { styles.ButtonRight } 
+            title = "Report Incident" 
+            onPress = {() => navigate('Report')} 
+
+      />
+        
+      <Button 
+           style = { styles.ButtonLeft } 
+           title = "Go Back" 
+           onPress = {() => navigate('Home')} 
+      /> 
+
       </View>
     );
   }
@@ -93,5 +107,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  main: {
+    height: "100%",
+    width: "100%"
+  },
+
+  ButtonRight: {
+    bottom: 0,
+    right: 0,
+  },
+
+  ButtonLeft: {
+    bottom: 0,
+    left: 0,
   },
 });
