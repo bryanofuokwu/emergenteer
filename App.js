@@ -1,5 +1,12 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, TextInput, Button } from 'react-native';
+import React, { Component } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TextInput,
+  Button
+} from "react-native";
 /*
 export default function App() {
   return (
@@ -10,32 +17,28 @@ export default function App() {
 }
 */
 export default class Login extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>Login</Text>
+        <TextInput placeholder="Username:" />
+        <TextInput placeholder="Password:" />
+        <View style={{ margin: 7 }} />
+        <Button onPress={this.props.onLoginPress} title="Submit" />
+      </View>
+    );
+  }
+}
 
-	render() {
-		return (
-				<View style={styles.container}>
-					<Text>
-						Login
-					</Text>
-					<TextInput placeholder='Username:' />
-					<TextInput placeholder='Password:' />
-					<View style={{margin:7}} />
-					<Button
-							onPress={this.props.onLoginPress}
-							title="Submit"
-							/>
-
-				</View>
-			)
-	}
+export default class Emergency_Type extends Component {
+  // for type of emergency
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });
-
