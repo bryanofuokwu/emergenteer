@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-<<<<<<< Updated upstream
-=======
 import {createAppContainer} from "react-navigation";
 import {createStackNavigator} from "react-navigation-stack";
->>>>>>> Stashed changes
 import {
   StyleSheet,
   Text,
@@ -14,11 +11,11 @@ import {
   TouchableOpacity,
   Image
 } from "react-native";
-<<<<<<< Updated upstream
-import { Button } from "./Button";
+import Emergency from './Emergency.js';
+class MyScreen extends Component {
 
-export default class App extends React.Component {
   render() {
+    const {navigate} = this.props.navigation;
     return (
       <View style={styles.main}>
         <View style={styles.logo}>
@@ -34,21 +31,16 @@ export default class App extends React.Component {
             placeholder="Enter Password"
             secureTextEntry
           />
-          <TouchableOpacity style={styles.btn}>
-            <Text>Login</Text>
-          </TouchableOpacity>
+          <Button //style={styles.btn}
+          //<TouchableOpacity style={styles.btn}>
+            //<Text>Login</Text>
+            title="Login"
+            onPress={() => navigate('Profile')}
+          // </TouchableOpacity>
+          />
         </View>
       </View>
     );
-  }
-}
-export default class Emergency_Type extends Component {
-  // for type of emergency
-  render() {
-    return <Text> Please select your emergency </Text>;
-    <view style={styles.container}>
-      <Button />
-    </view>;
   }
 }
 const styles = StyleSheet.create({
@@ -90,15 +82,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 10
   }
-=======
-//import { Button } from "./Button";
-import MyScreen from'./Login.js';
-import Emergency_Type from'./Emergency.js';
-const MainNavigator = createStackNavigator({
-	Home: {screen: MyScreen},
-	Profile: {screen: Emergency_Type},
->>>>>>> Stashed changes
 });
-const App = createAppContainer(MainNavigator);
-
-export default App;
+export default MyScreen;
+/*
+class Emergency_Type extends Component {
+  // for type of emergency
+  render() {
+    return <Text> Please select your emergency </Text>;
+    <view style={styles.container}>
+      <Button />
+    </view>;
+  }
+}
+*/
