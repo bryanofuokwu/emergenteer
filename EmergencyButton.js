@@ -11,6 +11,8 @@ import {
 } from "react-native";
 import { Button2 } from "./Button";
 
+import { alertFire } from "./MapPage";
+import onFire from "./MapPage";
 export default class Emergency extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
@@ -31,9 +33,9 @@ export default class Emergency extends React.Component {
         <View style={{
             borderWidth: 1,
             position: "absolute",
-            bottom: 200,
-            alignSelf: "left",
-            left: 20,
+            bottom: 250,
+            alignSelf: "center",
+            center: 0,
             borderRadius: 100,
             backgroundColor: "black"
           }}>
@@ -41,14 +43,16 @@ export default class Emergency extends React.Component {
             source={require("./assets/alert_icon.png")}
             style={{ width: 75, height: 75 }}
           />
-          <Button style={styles.Button} title="Emergency" />
+          <Button style={styles.Button} title="Emergency" 
+            onPress={() => navigate("Map")}
+          />
         </View>
         <View style={{
             borderWidth: 1,
             position: "absolute",
-            bottom: 200,
-            alignSelf: "center",
-            center: 0,
+            bottom: 250,
+            alignSelf: "left",
+            left: 20,
             borderRadius: 100,
             backgroundColor: "black"
           }}>
@@ -58,13 +62,13 @@ export default class Emergency extends React.Component {
             style={{ width: 75, height: 75 }}
           />
           <Button style={styles.submitButton} title="Fire" 
-            onPress={() => navigate("Map")}
+            onPress={() => navigate("Map") && alertFire()}
           />
         </View>
         <View style={{
             borderWidth: 1,
             position: "absolute",
-            bottom: 200,
+            bottom: 250,
             alignSelf: "right",
             right: 20,
             borderRadius: 100,
@@ -74,7 +78,9 @@ export default class Emergency extends React.Component {
             source={require("./assets/animal_icon.png")}
             style={{ width: 75, height: 75 }}
           />
-          <Button style={styles.Button} title="Animal" />
+          <Button style={styles.Button} title="Animal" 
+            onPress={() => navigate("Map")}
+          />
         </View>
         <View
           style={{
