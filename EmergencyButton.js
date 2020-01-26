@@ -126,9 +126,9 @@ const styles = StyleSheet.create({
     margin: 10
   },
   btn: {
-    width: 200,
-    height: 50,
-    backgroundColor: "deepskyblue",
+    width: 100,
+    height: 25,
+    backgroundColor: "white",
     textAlign: "center",
     borderRadius: 40,
     alignItems: "center",
@@ -153,5 +153,10 @@ const styles = StyleSheet.create({
   ButtonLeft: {
     bottom: 0,
     right: 0
+  },
+  submitButton: {
+    position: "absolute",
+    bottom: 0,
+    left: 0
   }
 });
